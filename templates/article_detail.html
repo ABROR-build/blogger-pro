@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-body">
+            {% if object.image %}
+                <img class="card-img-top" src="{{ object.image.url }}" alt="{{ object.title }}">
+            {% endif %}
+            <h1 class="card-title">{{ object.title }}</h1>
+            <p class="card-title">{{ object.text }}</p>
+            <h6 class="card-subtitle mb-2 text-muted">Author: {{ object.author }} | {{object.date}}</h6>
+            <a href="{% url 'article_edit' article.pk %}">Edit</a>
+            <a href="{% url 'article_delete' article.pk %}">Delete</a>
+            <a href="{% url 'article_list' %}">Back</a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

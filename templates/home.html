@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Home page{% endblock title %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="jumbotron">
+            <h1 class="display-4">Assalamu Alaikum {{ user.username }}</h1>
+            <p class="lead">Welcome to Blogger pro webpage! </p>
+            <hr class="my-4">
+            <p>Here you can post and view people's blogs.</p>
+            <p class="lead">
+                <a href="{% url 'article_list' %}">
+                    <button class="btn btn-info ml2">See Posts</button>
+                </a>
+            </p>
+            <p class="lead"><a href="https://github.com/ABROR-build">Creator</a></p>
+        </div>
+
+    {% else %}
+        <p>You haven't logged in yet</p>
+        <p><a href="{% url 'login' %}">Login</a></p>
+        <p><a href="{% url 'signup' %}">Signup</a></p>
+
+    {% endif %}
+{% endblock content %}
